@@ -1,6 +1,7 @@
-﻿using ICSharpCode.SharpZipLib.Zip;
+﻿using Ionic.Zip;
 using System;
 using System.IO;
+using System.Text;
 using System.Windows.Forms;
 
 namespace Me.Task.Ctrl
@@ -65,7 +66,7 @@ namespace Me.Task.Ctrl
             }
             for (int r = 0; r < gv.Rows.Count - 1; r++)
             {
-                string path = tbSave.Text + "\\" + new Guid().ToString().Replace("-", "").ToLower() + ".zip";
+                string path = tbSave.Text + "\\" + Guid.NewGuid().ToString().Replace("-", "").ToLower() + ".zip";
                 gv.Rows[r].Cells[1].Value = path;
                 gv.Rows[r].Cells[3].Value = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff");
                 if (File.Exists(path))
@@ -75,45 +76,50 @@ namespace Me.Task.Ctrl
                 }
                 else
                 {
-                    byte[] buffer = ZipFolder(gv.Rows[r].Cells[0].Value.ToString());
-                    File.WriteAllBytes(path, buffer);
+                    //byte[] buffer = ZipFolder(gv.Rows[r].Cells[0].Value.ToString());
+                    //File.WriteAllBytes(path, buffer);
+                    using (ZipFile zip = new ZipFile(Encoding.UTF8))
+                    {
+                        zip.AddDirectory(gv.Rows[r].Cells[0].Value.ToString());
+                        zip.Save(path);
+                    }
                     gv.Rows[r].Cells[2].Value = "成功";
                     gv.Rows[r].Cells[4].Value = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff");
                 }
             }
             pbar.Hide();
         }
-        /// <summary>
-        /// 压缩打包文件
-        /// </summary>
-        private byte[] ZipFolder(string zips)
-        {
-            MemoryStream ms = new MemoryStream();
-            byte[] buffer = null;
+        ///// <summary>
+        ///// 压缩打包文件
+        ///// </summary>
+        //private byte[] ZipFolder(string zips)
+        //{
+        //    MemoryStream ms = new MemoryStream();
+        //    byte[] buffer = null;
 
-            using (ZipFile file = ZipFile.Create(ms))
-            {
-                file.BeginUpdate();
-                //file.NameTransform = new MyNameTransfom();//通过这个名称格式化器，可以将里面的文件名进行一些处理。默认情况下，会自动根据文件的路径在zip中创建有关的文件夹。
-                foreach (string fpath in Directory.GetFiles(zips))
-                {
-                    file.Add(fpath);
-                }
-                foreach (string dir in Directory.GetDirectories(zips))
-                {
-                    ZipFolder(dir);
-                    
-                }
-                
-                file.CommitUpdate();
+        //    using (ZipFile file = ZipFile.Create(ms))
+        //    {
+        //        file.BeginUpdate();
+        //        //file.NameTransform = new MyNameTransfom();//通过这个名称格式化器，可以将里面的文件名进行一些处理。默认情况下，会自动根据文件的路径在zip中创建有关的文件夹。
+        //        foreach (string fpath in Directory.GetFiles(zips))
+        //        {
+        //            file.Add(fpath);
+        //        }
+        //        foreach (string dir in Directory.GetDirectories(zips))
+        //        {
+        //            ZipFolder(dir);
 
-                buffer = new byte[ms.Length];
-                ms.Position = 0;
-                ms.Read(buffer, 0, buffer.Length);
-            }
+        //        }
 
-            return buffer;
-        }
+        //        file.CommitUpdate();
+
+        //        buffer = new byte[ms.Length];
+        //        ms.Position = 0;
+        //        ms.Read(buffer, 0, buffer.Length);
+        //    }
+
+        //    return buffer;
+        //}
 
     }
 
