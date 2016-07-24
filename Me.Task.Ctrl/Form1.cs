@@ -1,13 +1,6 @@
 ﻿using ICSharpCode.SharpZipLib.Zip;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Me.Task.Ctrl
@@ -102,40 +95,16 @@ namespace Me.Task.Ctrl
             {
                 file.BeginUpdate();
                 //file.NameTransform = new MyNameTransfom();//通过这个名称格式化器，可以将里面的文件名进行一些处理。默认情况下，会自动根据文件的路径在zip中创建有关的文件夹。
-                foreach (var m in zips.videos)
+                foreach (string fpath in Directory.GetFiles(zips))
                 {
-                    if (!string.IsNullOrEmpty(m.sqeeze) && File.Exists(Server.MapPath("/ResV1_0/Video/" + m.sqeeze + ".mp4")))
-                    {
-                        file.Add(Server.MapPath("/ResV1_0/Video/" + m.sqeeze + ".mp4"));
-                    }
-                    if (!string.IsNullOrEmpty(m.sqeezehold) && System.IO.File.Exists(Server.MapPath("/ResV1_0/Video/" + m.sqeezehold + ".mp4")))
-                    {
-                        file.Add(Server.MapPath("/ResV1_0/Video/" + m.sqeezehold + ".mp4"));
-                    }
-                    if (!string.IsNullOrEmpty(m.relax) && System.IO.File.Exists(Server.MapPath("/ResV1_0/Video/" + m.relax + ".mp4")))
-                    {
-                        file.Add(Server.MapPath("/ResV1_0/Video/" + m.relax + ".mp4"));
-                    }
-                    if (!string.IsNullOrEmpty(m.relaxhold) && System.IO.File.Exists(Server.MapPath("/ResV1_0/Video/" + m.relaxhold + ".mp4")))
-                    {
-                        file.Add(Server.MapPath("/ResV1_0/Video/" + m.relaxhold + ".mp4"));
-                    }
+                    file.Add(fpath);
                 }
-                foreach (var m in zips.tails)
+                foreach (string dir in Directory.GetDirectories(zips))
                 {
-                    if (!string.IsNullOrEmpty(m.fname) && System.IO.File.Exists(Server.MapPath("/ResV1_0/Tail/" + m.fname + ".mp4")))
-                    {
-                        file.Add(Server.MapPath("/ResV1_0/Tail/" + m.fname + ".mp4"));
-                    }
+                    ZipFolder(dir);
+                    
                 }
-
-                foreach (var m in zips.tips)
-                {
-                    if (!string.IsNullOrEmpty(m.tips) && System.IO.File.Exists(Server.MapPath("/ResV1_0/Tips/" + m.tips + ".mp3")))
-                    {
-                        file.Add(Server.MapPath("/ResV1_0/Tips/" + m.tips + ".mp3"));
-                    }
-                }
+                
                 file.CommitUpdate();
 
                 buffer = new byte[ms.Length];
