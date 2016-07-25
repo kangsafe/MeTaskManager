@@ -6,6 +6,7 @@ using System.Windows.Forms;
 /// <summary>
 /// 打包dll到exe文件用到的工具 http://tech.trailmax.info/2014/01/bundling-all-your-assemblies-into-one-or-alternative-to-ilmerge/
 /// 或者http://www.cnblogs.com/huangcong/archive/2010/03/29/1699904.html
+/// 进度调用组件Install-Package Quartz
 /// </summary>
 namespace Me.Task.Ctrl
 {
