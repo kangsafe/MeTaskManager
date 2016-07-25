@@ -1,12 +1,7 @@
 ﻿using log4net;
 using Quartz;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Me.Task.Ctrl
+namespace Me.Task.Jobs.BackupDisk
 {
     public sealed class Job_BackupHarddisk : IJob
     {
@@ -14,7 +9,7 @@ namespace Me.Task.Ctrl
 
         public void Execute(IJobExecutionContext context)
         {
-            _logger.InfoFormat("TestJob测试");
+            _logger.InfoFormat("Job_BackupHarddisk");
         }
     }
 }

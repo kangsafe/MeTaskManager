@@ -38,12 +38,13 @@
             this.btnStart = new System.Windows.Forms.ToolStripButton();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.gv = new System.Windows.Forms.DataGridView();
-            this.pbar = new System.Windows.Forms.ProgressBar();
             this.backsource = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.savepath = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.taskstatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.begintime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.endtime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pbar = new System.Windows.Forms.ProgressBar();
+            this.btnTask = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gv)).BeginInit();
             this.SuspendLayout();
@@ -56,7 +57,8 @@
             this.btnSave,
             this.toolStripSeparator2,
             this.btnAdd,
-            this.btnStart});
+            this.btnStart,
+            this.btnTask});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(799, 25);
@@ -127,14 +129,6 @@
             this.gv.Size = new System.Drawing.Size(799, 236);
             this.gv.TabIndex = 1;
             // 
-            // pbar
-            // 
-            this.pbar.Location = new System.Drawing.Point(180, 89);
-            this.pbar.Name = "pbar";
-            this.pbar.Size = new System.Drawing.Size(302, 23);
-            this.pbar.TabIndex = 2;
-            this.pbar.Visible = false;
-            // 
             // backsource
             // 
             this.backsource.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
@@ -169,6 +163,24 @@
             this.endtime.FillWeight = 15F;
             this.endtime.HeaderText = "结束时间";
             this.endtime.Name = "endtime";
+            // 
+            // pbar
+            // 
+            this.pbar.Location = new System.Drawing.Point(180, 89);
+            this.pbar.Name = "pbar";
+            this.pbar.Size = new System.Drawing.Size(302, 23);
+            this.pbar.TabIndex = 2;
+            this.pbar.Visible = false;
+            // 
+            // btnTask
+            // 
+            this.btnTask.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.btnTask.Image = ((System.Drawing.Image)(resources.GetObject("btnTask.Image")));
+            this.btnTask.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnTask.Name = "btnTask";
+            this.btnTask.Size = new System.Drawing.Size(60, 22);
+            this.btnTask.Text = "执行作业";
+            this.btnTask.Click += new System.EventHandler(this.btnTask_Click);
             // 
             // Form1
             // 
@@ -205,6 +217,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn taskstatus;
         private System.Windows.Forms.DataGridViewTextBoxColumn begintime;
         private System.Windows.Forms.DataGridViewTextBoxColumn endtime;
+        private System.Windows.Forms.ToolStripButton btnTask;
     }
 }
 

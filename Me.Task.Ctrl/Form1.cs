@@ -3,6 +3,7 @@ using System;
 using System.IO;
 using System.Text;
 using System.Windows.Forms;
+using Topshelf;
 /// <summary>
 /// 打包dll到exe文件用到的工具 http://tech.trailmax.info/2014/01/bundling-all-your-assemblies-into-one-or-alternative-to-ilmerge/
 /// 或者http://www.cnblogs.com/huangcong/archive/2010/03/29/1699904.html
@@ -97,6 +98,23 @@ namespace Me.Task.Ctrl
                 }
             }
             pbar.Hide();
+        }
+
+        private void btnTask_Click(object sender, EventArgs e)
+        {
+            log4net.Config.XmlConfigurator.ConfigureAndWatch(new FileInfo(AppDomain.CurrentDomain.BaseDirectory + "log4net.config"));
+            HostFactory.Run(x =>
+            {
+                x.UseLog4Net();
+                x.RunAsLocalSystem();
+                x.Service<ServiceRunner>();
+                x.SetDescription("QuartzDemo服务描述");
+                x.SetDisplayName("QuartzDemo服务显示名称");
+                x.SetServiceName("Me.Task.Ctrl.ServiceRunner");
+
+                x.EnablePauseAndContinue();
+            });
+
         }
     }
 
