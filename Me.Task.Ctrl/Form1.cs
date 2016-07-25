@@ -3,7 +3,10 @@ using System;
 using System.IO;
 using System.Text;
 using System.Windows.Forms;
-
+/// <summary>
+/// 打包dll到exe文件用到的工具 http://tech.trailmax.info/2014/01/bundling-all-your-assemblies-into-one-or-alternative-to-ilmerge/
+/// 或者http://www.cnblogs.com/huangcong/archive/2010/03/29/1699904.html
+/// </summary>
 namespace Me.Task.Ctrl
 {
     public partial class Form1 : Form
