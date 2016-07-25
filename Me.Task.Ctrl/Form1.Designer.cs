@@ -45,6 +45,10 @@
             this.endtime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pbar = new System.Windows.Forms.ProgressBar();
             this.btnTask = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnJob = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gv)).BeginInit();
             this.SuspendLayout();
@@ -57,8 +61,12 @@
             this.btnSave,
             this.toolStripSeparator2,
             this.btnAdd,
+            this.toolStripSeparator1,
             this.btnStart,
-            this.btnTask});
+            this.toolStripSeparator3,
+            this.btnTask,
+            this.toolStripSeparator4,
+            this.btnJob});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(799, 25);
@@ -182,6 +190,31 @@
             this.btnTask.Text = "执行作业";
             this.btnTask.Click += new System.EventHandler(this.btnTask_Click);
             // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 25);
+            // 
+            // btnJob
+            // 
+            this.btnJob.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.btnJob.Image = ((System.Drawing.Image)(resources.GetObject("btnJob.Image")));
+            this.btnJob.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnJob.Name = "btnJob";
+            this.btnJob.Size = new System.Drawing.Size(60, 22);
+            this.btnJob.Text = "作业管理";
+            this.btnJob.Click += new System.EventHandler(this.btnJob_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -218,6 +251,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn begintime;
         private System.Windows.Forms.DataGridViewTextBoxColumn endtime;
         private System.Windows.Forms.ToolStripButton btnTask;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
+        private System.Windows.Forms.ToolStripButton btnJob;
     }
 }
 

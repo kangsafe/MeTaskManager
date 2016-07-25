@@ -13,7 +13,7 @@
       <name>Job_BackupHarddisk</name>
       <group>Test</group>
       <description>TestJob测试</description>
-      <job-type>Me.Task.Ctrl.Job_BackupHarddisk,QuartzDemo</job-type>
+      <job-type>Me.Task.Jobs.BackupDisk.Job_BackupHarddisk,Me.Task.Jobs.BackupDisk</job-type>
       <durable>true</durable>
       <recover>false</recover>
     </job>

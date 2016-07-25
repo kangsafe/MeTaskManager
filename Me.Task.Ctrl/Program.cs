@@ -1,7 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.IO;
+using System.Text;
 using System.Windows.Forms;
 
 namespace Me.Task.Ctrl
@@ -17,6 +16,10 @@ namespace Me.Task.Ctrl
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
+            log4net.Config.XmlConfigurator.ConfigureAndWatch(new FileInfo(AppDomain.CurrentDomain.BaseDirectory + "log4net.config"));
+            //string xml = "";
+            
+            //log4net.Config.XmlConfigurator.Configure();
         }
     }
 }

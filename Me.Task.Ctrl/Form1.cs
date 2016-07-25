@@ -102,7 +102,7 @@ namespace Me.Task.Ctrl
 
         private void btnTask_Click(object sender, EventArgs e)
         {
-            log4net.Config.XmlConfigurator.ConfigureAndWatch(new FileInfo(AppDomain.CurrentDomain.BaseDirectory + "log4net.config"));
+            
             HostFactory.Run(x =>
             {
                 x.UseLog4Net();
@@ -115,6 +115,12 @@ namespace Me.Task.Ctrl
                 x.EnablePauseAndContinue();
             });
 
+        }
+
+        private void btnJob_Click(object sender, EventArgs e)
+        {
+            JobFrm frm = new JobFrm();
+            frm.ShowDialog();
         }
     }
 
